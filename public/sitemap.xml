@@ -1,0 +1,113 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://tranzkit.com/</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <video:video>
+      <video:thumbnail_loc>https://ik.imagekit.io/cw5qoihvu/Tranzkit-cover.jpg</video:thumbnail_loc>
+      <video:title>Tranzkit</video:title>
+      <video:description>منصة متكاملة مصممة لتبسيط عمليات النقل، وتحسين التخطيط، وتعزيز الرقابة المالية للشركات التي تعمل في مجال خدمات النقل الجماعي والتنقل الذكي</video:description>
+      <video:content_loc>https://youtube.com/shorts/EPv5kbHHYZ0</video:content_loc>
+      <video:player_loc>https://ik.imagekit.io/cw5qoihvu/tranzkit.mp4?updatedAt=1742701412695</video:player_loc>
+      <video:duration>120</video:duration>
+      <video:publication_date>2025-03-03T19:00:00+03:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tranzkit.com/terms-policy</loc>
+    <lastmod>2023-06-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tranzkit.com/app-captain</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ibb.co/k6WwtSyd/FB-IMG-1742266337216.jpg</video:thumbnail_loc>
+      <video:title>تطبيق الكابتن من Tranzkit</video:title>
+      <video:description>تطبيق خاص للسائقين يمكن من خلاله تتبع الرحلات وإدارة المهام بسهولة وتحسين الأداء</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=captain_app_demo</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/captain_app_demo</video:player_loc>
+      <video:duration>90</video:duration>
+      <video:publication_date>2023-01-01T19:00:00+03:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tranzkit.com/app-supervisor</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ibb.co/k6WwtSyd/FB-IMG-1742266337216.jpg</video:thumbnail_loc>
+      <video:title>تطبيق المشرفين من Tranzkit</video:title>
+      <video:description>تطبيق للمشرفين لإدارة ومراقبة أداء الأسطول والسائقين في الميدان بأعلى كفاءة</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=supervisor_app_demo</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/supervisor_app_demo</video:player_loc>
+      <video:duration>90</video:duration>
+      <video:publication_date>2023-01-01T19:00:00+03:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tranzkit.com/app-rider</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ibb.co/k6WwtSyd/FB-IMG-1742266337216.jpg</video:thumbnail_loc>
+      <video:title>تطبيق الراكب من Tranzkit</video:title>
+      <video:description>تطبيق سهل الاستخدام للركاب لحجز وتتبع الرحلات في الوقت الفعلي ومتابعة الحركة بسهولة</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=rider_app_demo</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/rider_app_demo</video:player_loc>
+      <video:duration>90</video:duration>
+      <video:publication_date>2023-01-01T19:00:00+03:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tranzkit.com/app-client-dashboard</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ibb.co/k6WwtSyd/FB-IMG-1742266337216.jpg</video:thumbnail_loc>
+      <video:title>لوحة تحكم العملاء من Tranzkit</video:title>
+      <video:description>منصة تتيح للعملاء متابعة الرحلات وإدارة الحسابات ومشاهدة التقارير بطريقة سهلة وفعالة</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=client_dashboard_demo</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/client_dashboard_demo</video:player_loc>
+      <video:duration>120</video:duration>
+      <video:publication_date>2023-01-01T19:00:00+03:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://tranzkit.com/app-operations-dashboard</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ibb.co/k6WwtSyd/FB-IMG-1742266337216.jpg</video:thumbnail_loc>
+      <video:title>لوحة تحكم العمليات من Tranzkit</video:title>
+      <video:description>منصة إدارية متكاملة للتحكم في كافة العمليات اللوجستية وإدارة الرحلات بكفاءة عالية</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=operations_dashboard_demo</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/operations_dashboard_demo</video:player_loc>
+      <video:duration>120</video:duration>
+      <video:publication_date>2023-01-01T19:00:00+03:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+</urlset>

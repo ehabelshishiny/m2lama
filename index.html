@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>m2lama - School Supplies in 3 Clicks</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#1ECBE1", secondary: "#FF7A50" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+      font-family: 'Poppins', sans-serif;
+      }
+      @keyframes scroll {
+      0% {
+      transform: translateX(0);
+      }
+      100% {
+      transform: translateX(-100%);
+      }
+      }
+      .animate-scroll {
+      animation: scroll 40s linear infinite;
+      }
+      .font-arabic {
+      font-family: 'Cairo', sans-serif;
+      }
+      .hero-gradient {
+      background: linear-gradient(120deg, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.8) 100%);
+      }
+      .app-screenshot {
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      }
+      .feature-card {
+      transition: all 0.3s ease;
+      }
+      .feature-card:hover {
+      transform: translateY(-5px);
+      }
+      [dir="rtl"] .ltr-only {
+      display: none;
+      }
+      [dir="ltr"] .rtl-only {
+      display: none;
+      }
+      .animated-blob {
+      animation: blob-animation 8s infinite alternate;
+      }
+      @keyframes blob-animation {
+      0% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      }
+      50% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+      }
+      100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      }
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <header class="fixed w-full bg-white shadow-sm z-50">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <img
+            src="https://static.readdy.ai/image/b6ae462ab1cf249eefdcffb58bf97f62/3c6c5757c6f1c5ba4cb7e628acb3cc2e.png"
+            alt="m2lama logo"
+            class="h-12 w-48 object-contain"
+          />
+        </div>
+        <nav class="hidden md:flex items-center space-x-6">
+          <a
+            href="#features"
+            class="nav-link text-gray-700 hover:text-primary font-medium transition"
+          >
+            <span class="ltr-only">Features</span>
+            <span class="rtl-only font-arabic">المميزات</span>
+          </a>
+          <a
+            href="#how-it-works"
+            class="nav-link text-gray-700 hover:text-primary font-medium transition"
+          >
+            <span class="ltr-only">How It Works</span>
+            <span class="rtl-only font-arabic">كيف يعمل</span>
+          </a>
+          <a
+            href="#benefits"
+            class="nav-link text-gray-700 hover:text-primary font-medium transition"
+          >
+            <span class="ltr-only">Benefits</span>
+            <span class="rtl-only font-arabic">الفوائد</span>
+          </a>
+          <a
+            href="#download"
+            class="nav-link text-gray-700 hover:text-primary font-medium transition"
+          >
+            <span class="ltr-only">Download</span>
+            <span class="rtl-only font-arabic">تحميل</span>
+          </a>
+        </nav>
+        <div class="flex items-center space-x-4">
+          <button
+            id="language-toggle"
+            class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 transition"
+          >
+            <i class="ri-global-line ri-lg text-gray-700"></i>
+          </button>
+          <a
+            href="https://ma2lama-33654.bubbleapps.io/version-test/test"
+            data-readdy="true"
+            class="hidden md:flex items-center justify-center px-4 py-2 border border-gray-300 text-gray-700 font-medium rounded-button hover:bg-gray-50 transition whitespace-nowrap"
+          >
+            <span class="ltr-only">Login</span>
+            <span class="rtl-only font-arabic">تسجيل الدخول</span>
+          </a>
+          <button
+            id="download-app-btn"
+            class="hidden md:flex items-center justify-center px-5 py-2 bg-primary text-white font-medium rounded-button hover:bg-opacity-90 transition whitespace-nowrap"
+          >
+            <span class="ltr-only">Download App</span>
+            <span class="rtl-only font-arabic">تحميل التطبيق</span>
+          </button>
+          <div
+            id="download-popup"
+            class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
+          >
+            <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative">
+              <button
+                id="close-popup"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              >
+                <i class="ri-close-line ri-lg"></i>
+              </button>
+              <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">
+                <span class="ltr-only">Choose Your Platform</span>
+                <span class="rtl-only font-arabic">اختر منصتك</span>
+              </h3>
+              <div class="flex flex-col gap-4">
+                <a
+                  href="#"
+                  class="flex items-center justify-center gap-3 px-6 py-4 bg-gray-900 text-white rounded-button hover:bg-gray-800 transition"
+                >
+                  <i class="ri-google-play-fill ri-lg"></i>
+                  <div class="text-left">
+                    <div class="text-xs opacity-80">GET IT ON</div>
+                    <div class="font-medium">Google Play</div>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  class="flex items-center justify-center gap-3 px-6 py-4 bg-gray-900 text-white rounded-button hover:bg-gray-800 transition"
+                >
+                  <i class="ri-apple-fill ri-lg"></i>
+                  <div class="text-left">
+                    <div class="text-xs opacity-80">Download on the</div>
+                    <div class="font-medium">App Store</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <button
+            id="mobile-menu-toggle"
+            class="md:hidden flex items-center justify-center w-10 h-10 text-gray-700"
+          >
+            <i class="ri-menu-line ri-lg"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <div class="container mx-auto px-4 py-3 space-y-3">
+          <a
+            href="#features"
+            class="block py-2 text-gray-700 hover:text-primary font-medium"
+          >
+            <span class="ltr-only">Features</span>
+            <span class="rtl-only font-arabic">المميزات</span>
+          </a>
+          <a
+            href="#how-it-works"
+            class="block py-2 text-gray-700 hover:text-primary font-medium"
+          >
+            <span class="ltr-only">How It Works</span>
+            <span class="rtl-only font-arabic">كيف يعمل</span>
+          </a>
+          <a
+            href="#benefits"
+            class="block py-2 text-gray-700 hover:text-primary font-medium"
+          >
+            <span class="ltr-only">Benefits</span>
+            <span class="rtl-only font-arabic">الفوائد</span>
+          </a>
+          <a
+            href="#download"
+            class="block py-2 text-gray-700 hover:text-primary font-medium"
+          >
+            <span class="ltr-only">Download</span>
+            <span class="rtl-only font-arabic">تحميل</span>
+          </a>
+          <div class="flex space-x-3 pt-2">
+            <a
+              href="https://ma2lama-33654.bubbleapps.io/version-test/test"
+              data-readdy="true"
+              class="flex-1 flex items-center justify-center px-4 py-2 border border-gray-300 text-gray-700 font-medium rounded-button hover:bg-gray-50 transition whitespace-nowrap"
+            >
+              <span class="ltr-only">Login</span>
+              <span class="rtl-only font-arabic">تسجيل الدخول</span>
+            </a>
+            <a
+              href="#download"
+              class="flex-1 flex items-center justify-center px-4 py-2 bg-primary text-white font-medium rounded-button hover:bg-opacity-90 transition whitespace-nowrap"
+            >
+              <span class="ltr-only">Download App</span>
+              <span class="rtl-only font-arabic">تحميل التطبيق</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!-- Hero Section -->
+      <section class="pt-24 pb-16 md:py-24 relative overflow-hidden">
+        <div
+          class="absolute inset-0 z-0"
+          style="background-image: url('https://readdy.ai/api/search-image?query=colorful%20school%20supplies%20background%20with%20pencils%2C%20notebooks%2C%20backpacks%2C%20and%20art%20supplies%20arranged%20in%20a%20playful%20pattern%2C%20bright%20colors%2C%20cheerful%20educational%20items%2C%20perfect%20for%20back%20to%20school%20theme%2C%20clean%20white%20background%20with%20vibrant%20school%20items&width=1920&height=1080&seq=123456&orientation=landscape'); background-size: cover; background-position: center; opacity: 0.15;"
+        ></div>
+        <div class="container mx-auto px-4 relative z-10">
+          <div class="flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-1/2 mb-10 md:mb-0">
+              <h1
+                class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
+              >
+                <span class="ltr-only"
+                  >School Supplies
+                  <span class="text-primary">in 3 Clicks</span></span
+                >
+                <span class="rtl-only font-arabic"
+                  >مستلزمات المدرسة
+                  <span class="text-primary">في 3 نقرات</span></span
+                >
+              </h1>
+              <p class="text-lg text-gray-600 mb-8 max-w-lg">
+                <span class="ltr-only"
+                  >Skip the back-to-school rush! Get all your school supplies
+                  delivered directly to school by selecting your school, grade,
+                  and package.</span
+                >
+                <span class="rtl-only font-arabic"
+                  >تخطي ازدحام العودة إلى المدرسة! احصل على جميع مستلزماتك
+                  المدرسية يتم توصيلها مباشرة إلى المدرسة باختيار مدرستك وصفك
+                  والحزمة المناسبة.</span
+                >
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                <a
+                  href="#download"
+                  class="flex items-center justify-center px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-opacity-90 transition whitespace-nowrap"
+                >
+                  <i class="ri-download-line ri-lg mr-2"></i>
+                  <span class="ltr-only">Download App</span>
+                  <span class="rtl-only font-arabic">تحميل التطبيق</span>
+                </a>
+                <a
+                  href="https://ma2lama-33654.bubbleapps.io/version-test/test"
+                  data-readdy="true"
+                  class="flex items-center justify-center px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-button hover:bg-gray-50 transition whitespace-nowrap"
+                >
+                  <i class="ri-login-box-line ri-lg mr-2"></i>
+                  <span class="ltr-only">Login to Store</span>
+                  <span class="rtl-only font-arabic">تسجيل الدخول للمتجر</span>
+                </a>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 flex justify-center">
+              <div class="relative">
+                <div
+                  class="absolute -top-10 -right-10 w-32 h-32 bg-yellow-300 rounded-full opacity-20 animated-blob"
+                ></div>
+                <div
+                  class="absolute -bottom-5 -left-5 w-24 h-24 bg-secondary rounded-full opacity-20 animated-blob"
+                  style="animation-delay: 2s;"
+                ></div>
+                <img
+                  src="https://readdy.ai/api/search-image?query=smartphone%20displaying%20a%20colorful%20school%20supplies%20shopping%20app%20interface%2C%20showing%20categories%20of%20school%20supplies%2C%20bright%20and%20cheerful%20design%2C%20user-friendly%20mobile%20app%20for%20parents%20to%20order%20school%20supplies%2C%20high%20quality%203D%20render&width=600&height=800&seq=123459&orientation=portrait"
+                  alt="m2lama App"
+                  class="app-screenshot relative z-10 rounded-xl max-w-full h-auto"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features Section -->
+      <section id="features" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <span class="ltr-only"
+                >Why Choose <span class="text-primary">m2lama</span>?</span
+              >
+              <span class="rtl-only font-arabic"
+                >لماذا تختار <span class="text-primary">m2lama</span>؟</span
+              >
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+              <span class="ltr-only"
+                >We make back-to-school shopping simple, fast, and stress-free
+                for parents.</span
+              >
+              <span class="rtl-only font-arabic"
+                >نجعل تسوق العودة إلى المدرسة بسيطًا وسريعًا وخاليًا من التوتر
+                للآباء.</span
+              >
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div
+              class="feature-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md"
+            >
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-6"
+              >
+                <i class="ri-school-line ri-2x text-primary"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                <span class="ltr-only">School Selection</span>
+                <span class="rtl-only font-arabic">اختيار المدرسة</span>
+              </h3>
+              <p class="text-gray-600">
+                <span class="ltr-only"
+                  >Simply select your child's school and grade to get the exact
+                  supplies they need for the year.</span
+                >
+                <span class="rtl-only font-arabic"
+                  >ما عليك سوى اختيار مدرسة طفلك والصف للحصول على المستلزمات
+                  الدقيقة التي يحتاجونها للعام.</span
+                >
+              </p>
+            </div>
+            <!-- Feature 2 -->
+            <div
+              class="feature-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md"
+            >
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-secondary bg-opacity-10 rounded-full mb-6"
+              >
+                <i class="ri-shopping-bag-line ri-2x text-secondary"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                <span class="ltr-only">Customized Packages</span>
+                <span class="rtl-only font-arabic">حزم مخصصة</span>
+              </h3>
+              <p class="text-gray-600">
+                <span class="ltr-only"
+                  >Choose from basic, standard, or premium supply packages to
+                  fit your budget and preferences.</span
+                >
+                <span class="rtl-only font-arabic"
+                  >اختر من بين حزم التوريد الأساسية أو القياسية أو المتميزة
+                  لتناسب ميزانيتك وتفضيلاتك.</span
+                >
+              </p>
+            </div>
+            <!-- Feature 3 -->
+            <div
+              class="feature-card bg-white p-6 rounded-lg shadow-sm hover:shadow-md"
+            >
+              <div
+                class="w-16 h-16 flex items-center justify-center bg-yellow-300 bg-opacity-10 rounded-full mb-6"
+              >
+                <i class="ri-truck-line ri-2x text-yellow-500"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                <span class="ltr-only">School Delivery</span>
+                <span class="rtl-only font-arabic">التوصيل للمدرسة</span>
+              </h3>
+              <p class="text-gray-600">
+                <span class="ltr-only"
+                  >We deliver supplies directly to your child's school, saving
+                  you time and hassle.</span
+                >
+                <span class="rtl-only font-arabic"
+                  >نقوم بتوصيل المستلزمات مباشرة إلى مدرسة طفلك، مما يوفر لك
+                  الوقت والمتاعب.</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- How It Works Section -->
+      <section id="how-it-works" class="py-16">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <span class="ltr-only">How It Works</span>
+              <span class="rtl-only font-arabic">كيف يعمل</span>
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+              <span class="ltr-only"
+                >Get your school supplies in just 3 simple steps</span
+              >
+              <span class="rtl-only font-arabic"
+                >احصل على مستلزماتك المدرسية في 3 خطوات بسيطة فقط</span
+              >
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Step 1 -->
+            <div class="relative">
+              <div class="flex flex-col items-center">
+                <div
+                  class="w-20 h-20 flex items-center justify-center bg-primary text-white text-2xl font-bold rounded-full mb-6 z-10"
+                >
+                  1
+                </div>
+                <h3
+                  class="text-xl font-semibold text-gray-900 mb-3 text-center"
+                >
+                  <span class="ltr-only">Select School & Grade</span>
+                  <span class="rtl-only font-arabic">اختر المدرسة والصف</span>
+                </h3>
+                <p class="text-gray-600 text-center">
+                  <span class="ltr-only"
+                    >Find your child's school and grade from our extensive
+                    database.</span
+                  >
+                  <span class="rtl-only font-arabic"
+                    >ابحث عن مدرسة طفلك والصف من قاعدة بياناتنا الواسعة.</span
+                  >
+                </p>
+              </div>
+              <div
+                class="hidden md:block absolute top-10 left-full w-full h-0.5 bg-gray-200 -z-10 transform -translate-x-10"
+              ></div>
+            </div>
+            <!-- Step 2 -->
+            <div class="relative">
+              <div class="flex flex-col items-center">
+                <div
+                  class="w-20 h-20 flex items-center justify-center bg-secondary text-white text-2xl font-bold rounded-full mb-6 z-10"
+                >
+                  2
+                </div>
+                <h3
+                  class="text-xl font-semibold text-gray-900 mb-3 text-center"
+                >
+                  <span class="ltr-only">Choose Your Package</span>
+                  <span class="rtl-only font-arabic">اختر حزمتك</span>
+                </h3>
+                <p class="text-gray-600 text-center">
+                  <span class="ltr-only"
+                    >Select from our curated supply packages that match school
+                    requirements.</span
+                  >
+                  <span class="rtl-only font-arabic"
+                    >اختر من حزم التوريد المنسقة لدينا التي تتطابق مع متطلبات
+                    المدرسة.</span
+                  >
+                </p>
+              </div>
+              <div
+                class="hidden md:block absolute top-10 left-full w-full h-0.5 bg-gray-200 -z-10 transform -translate-x-10"
+              ></div>
+            </div>
+            <!-- Step 3 -->
+            <div class="relative">
+              <div class="flex flex-col items-center">
+                <div
+                  class="w-20 h-20 flex items-center justify-center bg-yellow-400 text-white text-2xl font-bold rounded-full mb-6 z-10"
+                >
+                  3
+                </div>
+                <h3
+                  class="text-xl font-semibold text-gray-900 mb-3 text-center"
+                >
+                  <span class="ltr-only">Delivery & Enjoy</span>
+                  <span class="rtl-only font-arabic">التوصيل والاستمتاع</span>
+                </h3>
+                <p class="text-gray-600 text-center">
+                  <span class="ltr-only"
+                    >We deliver everything to the school, labeled and ready for
+                    the first day.</span
+                  >
+                  <span class="rtl-only font-arabic"
+                    >نقوم بتوصيل كل شيء إلى المدرسة، مع وضع الملصقات وجاهزة
+                    لليوم الأول.</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Benefits Section -->
+      <section id="benefits" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <span class="ltr-only">Just 3 Clicks Away</span>
+              <span class="rtl-only font-arabic">على بعد 3 نقرات فقط</span>
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+              <span class="ltr-only"
+                >Get your school supplies delivered right to school - it's that
+                simple!</span
+              >
+              <span class="rtl-only font-arabic"
+                >احصل على مستلزماتك المدرسية يتم توصيلها مباشرة إلى المدرسة -
+                إنه بهذه البساطة!</span
+              >
+            </p>
+            <div
+              class="flex flex-col sm:flex-row justify-center gap-6 items-center"
+            >
+              <a
+                href="#download"
+                class="flex items-center px-8 py-4 bg-primary text-white font-medium rounded-button hover:bg-opacity-90 transition whitespace-nowrap"
+              >
+                <i class="ri-download-line ri-lg mr-3"></i>
+                <span class="ltr-only">Download App</span>
+                <span class="rtl-only font-arabic">تحميل التطبيق</span>
+              </a>
+              <a
+                href="https://ma2lama-33654.bubbleapps.io/version-test/test"
+                data-readdy="true"
+                class="flex items-center px-8 py-4 border-2 border-primary text-primary font-medium rounded-button hover:bg-primary hover:text-white transition whitespace-nowrap"
+              >
+                <i class="ri-login-box-line ri-lg mr-3"></i>
+                <span class="ltr-only">Login to Store</span>
+                <span class="rtl-only font-arabic">تسجيل الدخول للمتجر</span>
+              </a>
+            </div>
+          </div>
+          <!-- Benefit 1 -->
+          <div class="flex flex-col md:flex-row items-center gap-12 mb-16">
+            <div class="w-full md:w-1/2 mb-8 md:mb-0 md:pr-12">
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+                <span class="ltr-only">Special School Delivery Discounts</span>
+                <span class="rtl-only font-arabic"
+                  >خصومات خاصة للتوصيل المدرسي</span
+                >
+              </h3>
+              <p class="text-gray-600 mb-6">
+                <span class="ltr-only"
+                  >Save up to 15% when you choose school delivery. We partner
+                  with schools to provide bulk discounts that we pass directly
+                  to you.</span
+                >
+                <span class="rtl-only font-arabic"
+                  >وفر حتى 15٪ عند اختيار التوصيل المدرسي. نحن نتشارك مع المدارس
+                  لتقديم خصومات بالجملة نقدمها لك مباشرة.</span
+                >
+              </p>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <div
+                    class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-green-100 text-green-500 mt-0.5"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="ml-3 text-gray-600">
+                    <span class="ltr-only"
+                      >Exclusive school partnership pricing</span
+                    >
+                    <span class="rtl-only font-arabic"
+                      >أسعار شراكة مدرسية حصرية</span
+                    >
+                  </span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-green-100 text-green-500 mt-0.5"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="ml-3 text-gray-600">
+                    <span class="ltr-only">Bulk order savings</span>
+                    <span class="rtl-only font-arabic"
+                      >وفورات الطلبات بالجملة</span
+                    >
+                  </span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-green-100 text-green-500 mt-0.5"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="ml-3 text-gray-600">
+                    <span class="ltr-only"
+                      >Free delivery on orders over $50</span
+                    >
+                    <span class="rtl-only font-arabic"
+                      >توصيل مجاني للطلبات التي تزيد عن 50 دولارًا</span
+                    >
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div class="w-full md:w-1/2">
+              <img
+                src="https://readdy.ai/api/search-image?query=school%20supplies%20delivery%20service%2C%20boxes%20of%20school%20supplies%20being%20delivered%20to%20a%20school%2C%20organized%20packages%20with%20colorful%20school%20supplies%20visible%2C%20bright%20and%20cheerful%2C%20professional%20delivery%20service&width=600&height=400&seq=123460&orientation=landscape"
+                alt="School Delivery"
+                class="rounded-lg shadow-md w-full h-auto"
+              />
+            </div>
+          </div>
+          <!-- Benefit 2 -->
+          <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+            <div class="w-full md:w-1/2 mb-8 md:mb-0 md:pl-12">
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+                <span class="ltr-only">Custom Label Printing Service</span>
+                <span class="rtl-only font-arabic"
+                  >خدمة طباعة الملصقات المخصصة</span
+                >
+              </h3>
+              <p class="text-gray-600 mb-6">
+                <span class="ltr-only"
+                  >Save hours of labeling time! We print and apply name labels
+                  to all notebooks, folders, and supplies before delivery.</span
+                >
+                <span class="rtl-only font-arabic"
+                  >وفر ساعات من وقت وضع الملصقات! نقوم بطباعة وتطبيق ملصقات
+                  الأسماء على جميع الدفاتر والمجلدات والمستلزمات قبل
+                  التسليم.</span
+                >
+              </p>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <div
+                    class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-green-100 text-green-500 mt-0.5"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="ml-3 text-gray-600">
+                    <span class="ltr-only">Personalized name labels</span>
+                    <span class="rtl-only font-arabic">ملصقات أسماء مخصصة</span>
+                  </span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-green-100 text-green-500 mt-0.5"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="ml-3 text-gray-600">
+                    <span class="ltr-only"
+                      >Waterproof and durable stickers</span
+                    >
+                    <span class="rtl-only font-arabic"
+                      >ملصقات مقاومة للماء ومتينة</span
+                    >
+                  </span>
+                </li>
+                <li class="flex items-start">
+                  <div
+                    class="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-green-100 text-green-500 mt-0.5"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="ml-3 text-gray-600">
+                    <span class="ltr-only">Multiple design options</span>
+                    <span class="rtl-only font-arabic"
+                      >خيارات تصميم متعددة</span
+                    >
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div class="w-full md:w-1/2">
+              <img
+                src="https://readdy.ai/api/search-image?query=school%20supplies%20with%20custom%20name%20labels%2C%20notebooks%20and%20school%20items%20with%20printed%20name%20labels%2C%20organized%20school%20supplies%20with%20personalized%20stickers%2C%20colorful%20school%20items%20neatly%20labeled&width=600&height=400&seq=123461&orientation=landscape"
+                alt="Custom Labels"
+                class="rounded-lg shadow-md w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Testimonials Section -->
+      <section class="py-16">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <span class="ltr-only">What Parents Say</span>
+              <span class="rtl-only font-arabic">ماذا يقول الآباء</span>
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+              <span class="ltr-only"
+                >Hear from parents who have simplified their back-to-school
+                experience</span
+              >
+              <span class="rtl-only font-arabic"
+                >اسمع من الآباء الذين بسطوا تجربة العودة إلى المدرسة</span
+              >
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <div class="flex items-center mb-4">
+                <div class="text-yellow-400 flex">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-6">
+                <span class="ltr-only"
+                  >"As a working mom with three kids in different grades, m2lama
+                  has been a lifesaver! No more running around to multiple
+                  stores or standing in long lines. Everything arrived labeled
+                  and ready for school."</span
+                >
+                <span class="rtl-only font-arabic"
+                  >"كأم عاملة مع ثلاثة أطفال في صفوف مختلفة، كان m2lama بمثابة
+                  منقذ للحياة! لا مزيد من الركض إلى متاجر متعددة أو الوقوف في
+                  طوابير طويلة. وصل كل شيء مع وضع الملصقات وجاهز للمدرسة."</span
+                >
+              </p>
+              <div class="flex items-center">
+                <div
+                  class="mr-4 w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500"
+                >
+                  <i class="ri-user-3-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900">
+                    <span class="ltr-only">Sarah Johnson</span>
+                    <span class="rtl-only font-arabic">سارة جونسون</span>
+                  </h4>
+                  <p class="text-sm text-gray-500">
+                    <span class="ltr-only">Mother of 3</span>
+                    <span class="rtl-only font-arabic">أم لـ 3 أطفال</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <div class="flex items-center mb-4">
+                <div class="text-yellow-400 flex">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-6">
+                <span class="ltr-only"
+                  >"The label printing service alone is worth it! I used to
+                  spend an entire evening labeling everything. Now it all
+                  arrives ready to go, and the quality of the supplies is
+                  excellent."</span
+                >
+                <span class="rtl-only font-arabic"
+                  >"خدمة طباعة الملصقات وحدها تستحق ذلك! اعتدت أن أقضي أمسية
+                  كاملة في وضع الملصقات على كل شيء. الآن يصل كل شيء جاهزًا
+                  للاستخدام، وجودة المستلزمات ممتازة."</span
+                >
+              </p>
+              <div class="flex items-center">
+                <div
+                  class="mr-4 w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500"
+                >
+                  <i class="ri-user-3-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900">
+                    <span class="ltr-only">Ahmed Hassan</span>
+                    <span class="rtl-only font-arabic">أحمد حسن</span>
+                  </h4>
+                  <p class="text-sm text-gray-500">
+                    <span class="ltr-only">Father of 2</span>
+                    <span class="rtl-only font-arabic">أب لطفلين</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <div class="flex items-center mb-4">
+                <div class="text-yellow-400 flex">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-half-line"></i>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-6">
+                <span class="ltr-only"
+                  >"I love that I can choose between different package options.
+                  The premium package has such high-quality items that last the
+                  entire school year. The school delivery is so
+                  convenient!"</span
+                >
+                <span class="rtl-only font-arabic"
+                  >"أحب أنه يمكنني الاختيار بين خيارات الحزم المختلفة. تحتوي
+                  الحزمة المتميزة على عناصر عالية الجودة تدوم طوال العام
+                  الدراسي. التوصيل المدرسي مريح للغاية!"</span
+                >
+              </p>
+              <div class="flex items-center">
+                <div
+                  class="mr-4 w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500"
+                >
+                  <i class="ri-user-3-line ri-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-medium text-gray-900">
+                    <span class="ltr-only">Layla Mahmoud</span>
+                    <span class="rtl-only font-arabic">ليلى محمود</span>
+                  </h4>
+                  <p class="text-sm text-gray-500">
+                    <span class="ltr-only">Mother of 1</span>
+                    <span class="rtl-only font-arabic">أم لطفل واحد</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Download Section -->
+      <section
+        id="download"
+        class="py-16 bg-primary bg-opacity-5 relative overflow-hidden"
+      >
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-primary rounded-full opacity-10 -mr-32 -mt-32"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 w-64 h-64 bg-secondary rounded-full opacity-10 -ml-32 -mb-32"
+        ></div>
+        <div class="container mx-auto px-4 relative z-10">
+          <div class="flex flex-col md:flex-row items-center">
+            <div class="w-full md:w-1/2 mb-10 md:mb-0">
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                <span class="ltr-only"
+                  >Download the <span class="text-primary">m2lama</span> App
+                  Today</span
+                >
+                <span class="rtl-only font-arabic"
+                  >قم بتنزيل تطبيق
+                  <span class="text-primary">m2lama</span> اليوم</span
+                >
+              </h2>
+              <p class="text-lg text-gray-600 mb-8">
+                <span class="ltr-only"
+                  >Get ready for back-to-school season the smart way. Download
+                  our app and experience stress-free school supply
+                  shopping.</span
+                >
+                <span class="rtl-only font-arabic"
+                  >استعد لموسم العودة إلى المدرسة بالطريقة الذكية. قم بتنزيل
+                  تطبيقنا واستمتع بتسوق مستلزمات المدرسة بدون توتر.</span
+                >
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                <a
+                  href="#"
+                  class="flex items-center px-6 py-3 bg-gray-900 text-white rounded-button hover:bg-gray-800 transition whitespace-nowrap"
+                >
+                  <i class="ri-google-play-line ri-lg mr-3"></i>
+                  <div>
+                    <div class="text-xs">
+                      <span class="ltr-only">GET IT ON</span>
+                      <span class="rtl-only font-arabic">احصل عليه على</span>
+                    </div>
+                    <div class="font-medium">
+                      <span class="ltr-only">Google Play</span>
+                      <span class="rtl-only font-arabic">جوجل بلاي</span>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  class="flex items-center px-6 py-3 bg-gray-900 text-white rounded-button hover:bg-gray-800 transition whitespace-nowrap"
+                >
+                  <i class="ri-apple-fill ri-lg mr-3"></i>
+                  <div>
+                    <div class="text-xs">
+                      <span class="ltr-only">Download on the</span>
+                      <span class="rtl-only font-arabic">تنزيل من</span>
+                    </div>
+                    <div class="font-medium">
+                      <span class="ltr-only">App Store</span>
+                      <span class="rtl-only font-arabic">آب ستور</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="flex items-center">
+                <div class="flex items-center mr-4">
+                  <div class="text-yellow-400 flex">
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-half-line"></i>
+                  </div>
+                  <span class="ml-2 text-gray-700 font-medium">4.8</span>
+                </div>
+                <span class="text-gray-500">
+                  <span class="ltr-only">1,000+ Downloads</span>
+                  <span class="rtl-only font-arabic">+1,000 تنزيل</span>
+                </span>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 flex justify-center">
+              <div class="relative">
+                <img
+                  src="https://readdy.ai/api/search-image?query=smartphone%20displaying%20a%20colorful%20school%20supplies%20shopping%20app%20interface%2C%20showing%20categories%20of%20school%20supplies%20and%20checkout%20process%2C%20bright%20and%20cheerful%20design%2C%20user-friendly%20mobile%20app%20for%20parents%20to%20order%20school%20supplies%2C%20high%20quality%203D%20render&width=600&height=800&seq=123462&orientation=portrait"
+                  alt="m2lama App"
+                  class="app-screenshot relative z-10 rounded-xl max-w-full h-auto"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Partner Schools -->
+      <section class="py-16">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">
+              <span class="ltr-only">Our Partner Schools</span>
+              <span class="rtl-only font-arabic">مدارسنا الشريكة</span>
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+              <span class="ltr-only"
+                >Trusted by leading schools across the country</span
+              >
+              <span class="rtl-only font-arabic"
+                >موثوق به من قبل المدارس الرائدة في جميع أنحاء البلاد</span
+              >
+            </p>
+          </div>
+          <div class="overflow-hidden relative">
+            <div class="flex animate-scroll whitespace-nowrap">
+              <div class="flex min-w-full items-center justify-center gap-24">
+                <div
+                  class="flex flex-col items-center justify-center min-w-[240px]"
+                >
+                  <div
+                    class="w-20 h-20 flex items-center justify-center bg-white rounded-full mb-4 overflow-hidden"
+                  >
+                    <img
+                      src="https://readdy.ai/api/search-image?query=modern%20school%20logo%20design%20for%20International%20Academy%2C%20minimalist%2C%20professional%2C%20clean%20design%2C%20education%20symbol%2C%20white%20background%2C%20high%20quality&width=200&height=200&seq=123470&orientation=squarish"
+                      alt="International Academy"
+                      class="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <span
+                    class="text-gray-700 font-medium text-center whitespace-normal"
+                    >International Academy</span
+                  >
+                </div>
+                <div
+                  class="flex flex-col items-center justify-center min-w-[240px]"
+                >
+                  <div
+                    class="w-20 h-20 flex items-center justify-center bg-white rounded-full mb-4 overflow-hidden"
+                  >
+                    <img
+                      src="https://readdy.ai/api/search-image?query=modern%20school%20logo%20design%20for%20Greenwood%20School%2C%20minimalist%2C%20professional%2C%20clean%20design%2C%20education%20symbol%2C%20white%20background%2C%20high%20quality&width=200&height=200&seq=123471&orientation=squarish"
+                      alt="Greenwood School"
+                      class="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <span
+                    class="text-gray-700 font-medium text-center whitespace-normal"
+                    >Greenwood School</span
+                  >
+                </div>
+                <div
+                  class="flex flex-col items-center justify-center min-w-[240px]"
+                >
+                  <div
+                    class="w-20 h-20 flex items-center justify-center bg-white rounded-full mb-4 overflow-hidden"
+                  >
+                    <img
+                      src="https://readdy.ai/api/search-image?query=modern%20school%20logo%20design%20for%20Sunrise%20Academy%2C%20minimalist%2C%20professional%2C%20clean%20design%2C%20education%20symbol%2C%20white%20background%2C%20high%20quality&width=200&height=200&seq=123472&orientation=squarish"
+                      alt="Sunrise Academy"
+                      class="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <span
+                    class="text-gray-700 font-medium text-center whitespace-normal"
+                    >Sunrise Academy</span
+                  >
+                </div>
+                <div
+                  class="flex flex-col items-center justify-center min-w-[240px]"
+                >
+                  <div
+                    class="w-20 h-20 flex items-center justify-center bg-white rounded-full mb-4 overflow-hidden"
+                  >
+                    <img
+                      src="https://readdy.ai/api/search-image?query=modern%20school%20logo%20design%20for%20Future%20Leaders%20School%2C%20minimalist%2C%20professional%2C%20clean%20design%2C%20education%20symbol%2C%20white%20background%2C%20high%20quality&width=200&height=200&seq=123473&orientation=squarish"
+                      alt="Future Leaders School"
+                      class="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <span
+                    class="text-gray-700 font-medium text-center whitespace-normal"
+                    >Future Leaders School</span
+                  >
+                </div>
+              </div>
+              <div
+                class="flex min-w-full items-center justify-center gap-24"
+                aria-hidden="true"
+              >
+                <div
+                  class="flex flex-col items-center justify-center min-w-[240px]"
+                >
+                  <div
+                    class="w-20 h-20 flex items-center justify-center bg-white rounded-full mb-4 overflow-hidden"
+                  >
+                    <img
+                      src="https://readdy.ai/api/search-image?query=modern%20school%20logo%20design%20for%20International%20Academy%2C%20minimalist%2C%20professional%2C%20clean%20design%2C%20education%20symbol%2C%20white%20background%2C%20high%20quality&width=200&height=200&seq=123470&orientation=squarish"
+                      alt="International Academy"
+                      class="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <span
+                    class="text-gray-700 font-medium text-center whitespace-normal"
+                    >International Academy</span
+                  >
+                </div>
+                <div
+                  class="flex flex-col items-center justify-center min-w-[240px]"
+                >
+                  <div
+                    class="w-20 h-20 flex items-center justify-center bg-white rounded-full mb-4 overflow-hidden"
+                  >
+                    <img
+                      src="https://readdy.ai/api/search-image?query=modern%20school%20logo%20design%20for%20Greenwood%20School%2C%20minimalist%2C%20professional%2C%20clean%20design%2C%20education%20symbol%2C%20white%20background%2C%20high%20quality&width=200&height=200&seq=123471&orientation=squarish"
+                      alt="Greenwood School"
+                      class="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <span
+                    class="text-gray-700 font-medium text-center whitespace-normal"
+                    >Greenwood School</span
+                  >
+                </div>
+                <div
+                  class="flex flex-col items-center justify-center min-w-[240px]"
+                >
+                  <div
+                    class="w-20 h-20 flex items-center justify-center bg-white rounded-full mb-4 overflow-hidden"
+                  >
+                    <img
+                      src="https://readdy.ai/api/search-image?query=modern%20school%20logo%20design%20for%20Sunrise%20Academy%2C%20minimalist%2C%20professional%2C%20clean%20design%2C%20education%20symbol%2C%20white%20background%2C%20high%20quality&width=200&height=200&seq=123472&orientation=squarish"
+                      alt="Sunrise Academy"
+                      class="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <span
+                    class="text-gray-700 font-medium text-center whitespace-normal"
+                    >Sunrise Academy</span
+                  >
+                </div>
+                <div
+                  class="flex flex-col items-center justify-center min-w-[240px]"
+                >
+                  <div
+                    class="w-20 h-20 flex items-center justify-center bg-white rounded-full mb-4 overflow-hidden"
+                  >
+                    <img
+                      src="https://readdy.ai/api/search-image?query=modern%20school%20logo%20design%20for%20Future%20Leaders%20School%2C%20minimalist%2C%20professional%2C%20clean%20design%2C%20education%20symbol%2C%20white%20background%2C%20high%20quality&width=200&height=200&seq=123473&orientation=squarish"
+                      alt="Future Leaders School"
+                      class="w-16 h-16 object-contain"
+                    />
+                  </div>
+                  <span
+                    class="text-gray-700 font-medium text-center whitespace-normal"
+                    >Future Leaders School</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Newsletter -->
+      <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">
+              <span class="ltr-only">Stay Updated</span>
+              <span class="rtl-only font-arabic">ابق على اطلاع</span>
+            </h2>
+            <p class="text-lg text-gray-600 mb-8">
+              <span class="ltr-only"
+                >Subscribe to our newsletter for exclusive offers and
+                back-to-school tips</span
+              >
+              <span class="rtl-only font-arabic"
+                >اشترك في نشرتنا الإخبارية للحصول على عروض حصرية ونصائح العودة
+                إلى المدرسة</span
+              >
+            </p>
+            <form class="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                placeholder="Your email address"
+                class="flex-1 px-4 py-3 border-none rounded-button focus:ring-2 focus:ring-primary focus:outline-none"
+              />
+              <button
+                type="submit"
+                class="px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-opacity-90 transition whitespace-nowrap"
+              >
+                <span class="ltr-only">Subscribe</span>
+                <span class="rtl-only font-arabic">اشترك</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <!-- Company Info -->
+          <div>
+            <div class="flex items-center mb-6">
+              <img
+                src="https://static.readdy.ai/image/b6ae462ab1cf249eefdcffb58bf97f62/3c6c5757c6f1c5ba4cb7e628acb3cc2e.png"
+                alt="m2lama logo"
+                class="h-10 w-40 object-contain"
+              />
+            </div>
+            <p class="text-gray-400 mb-6">
+              <span class="ltr-only"
+                >Making back-to-school shopping simple, fast, and stress-free
+                for parents since 2023.</span
+              >
+              <span class="rtl-only font-arabic"
+                >جعل تسوق العودة إلى المدرسة بسيطًا وسريعًا وخاليًا من التوتر
+                للآباء منذ عام 2023.</span
+              >
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition"
+              >
+                <i class="ri-facebook-fill text-white"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition"
+              >
+                <i class="ri-instagram-line text-white"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition"
+              >
+                <i class="ri-twitter-x-line text-white"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-lg font-semibold mb-6">
+              <span class="ltr-only">Quick Links</span>
+              <span class="rtl-only font-arabic">روابط سريعة</span>
+            </h3>
+            <ul class="space-y-3 footer-quick-links">
+              <li>
+                <a
+                  href="#features"
+                  class="text-gray-400 hover:text-white transition scroll-link"
+                >
+                  <span class="ltr-only">Features</span>
+                  <span class="rtl-only font-arabic">المميزات</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#how-it-works"
+                  class="text-gray-400 hover:text-white transition scroll-link"
+                >
+                  <span class="ltr-only">How It Works</span>
+                  <span class="rtl-only font-arabic">كيف يعمل</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#benefits"
+                  class="text-gray-400 hover:text-white transition scroll-link"
+                >
+                  <span class="ltr-only">Benefits</span>
+                  <span class="rtl-only font-arabic">الفوائد</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#download"
+                  class="text-gray-400 hover:text-white transition scroll-link"
+                >
+                  <span class="ltr-only">Download</span>
+                  <span class="rtl-only font-arabic">تحميل</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact -->
+          <div>
+            <h3 class="text-lg font-semibold mb-6">
+              <span class="ltr-only">Contact</span>
+              <span class="rtl-only font-arabic">اتصل</span>
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <div
+                  class="flex-shrink-0 w-5 h-5 flex items-center justify-center mt-1 text-gray-400"
+                >
+                  <i class="ri-mail-line"></i>
+                </div>
+                <span class="ml-3 text-gray-400">
+                  <span class="ltr-only">support@m2lama.com</span>
+                  <span class="rtl-only font-arabic">support@m2lama.com</span>
+                </span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="flex-shrink-0 w-5 h-5 flex items-center justify-center mt-1 text-gray-400"
+                >
+                  <i class="ri-phone-line"></i>
+                </div>
+                <span class="ml-3 text-gray-400">
+                  <span class="ltr-only">+1 (555) 123-4567</span>
+                  <span class="rtl-only font-arabic">+1 (555) 123-4567</span>
+                </span>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="flex-shrink-0 w-5 h-5 flex items-center justify-center mt-1 text-gray-400"
+                >
+                  <i class="ri-map-pin-line"></i>
+                </div>
+                <span class="ml-3 text-gray-400">
+                  <span class="ltr-only"
+                    >123 Innovation Street, Tech City, 12345</span
+                  >
+                  <span class="rtl-only font-arabic"
+                    >123 شارع الابتكار، مدينة التكنولوجيا، 12345</span
+                  >
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-500 text-sm mb-4 md:mb-0">
+            <span class="ltr-only"
+              >&copy; 2025 m2lama. All rights reserved.</span
+            >
+            <span class="rtl-only font-arabic"
+              >© 2025 m2lama. جميع الحقوق محفوظة.</span
+            >
+          </p>
+          <div class="flex items-center space-x-4">
+            <div class="flex items-center">
+              <i class="ri-visa-line ri-lg text-gray-400 mr-2"></i>
+              <i class="ri-mastercard-line ri-lg text-gray-400 mr-2"></i>
+              <i class="ri-paypal-line ri-lg text-gray-400"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Smooth scroll functionality for nav links
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetSection = document.querySelector(targetId);
+            const headerHeight = document.querySelector("header").offsetHeight;
+            if (targetSection) {
+              const targetPosition = targetSection.offsetTop - headerHeight;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+        // Smooth scroll functionality
+        document.querySelectorAll(".scroll-link").forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+              targetSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenuToggle.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+        });
+        // Download popup functionality
+        const downloadPopup = document.getElementById("download-popup");
+        const closePopup = document.getElementById("close-popup");
+        // Function to show popup
+        function showDownloadPopup() {
+          downloadPopup.classList.remove("hidden");
+          downloadPopup.classList.add("flex");
+        }
+        // Function to hide popup
+        function hideDownloadPopup() {
+          downloadPopup.classList.add("hidden");
+          downloadPopup.classList.remove("flex");
+        }
+        // Add click event to all download buttons
+        document
+          .querySelectorAll('a[href="#download"], button#download-app-btn')
+          .forEach((button) => {
+            button.addEventListener("click", function (e) {
+              e.preventDefault();
+              showDownloadPopup();
+            });
+          });
+        // Close popup when clicking close button
+        closePopup.addEventListener("click", hideDownloadPopup);
+        // Close popup when clicking outside
+        downloadPopup.addEventListener("click", function (e) {
+          if (e.target === downloadPopup) {
+            hideDownloadPopup();
+          }
+        });
+        // Language toggle
+        const languageToggle = document.getElementById("language-toggle");
+        const htmlElement = document.documentElement;
+        languageToggle.addEventListener("click", function () {
+          if (htmlElement.dir === "ltr") {
+            htmlElement.dir = "rtl";
+            htmlElement.lang = "ar";
+          } else {
+            htmlElement.dir = "ltr";
+            htmlElement.lang = "en";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

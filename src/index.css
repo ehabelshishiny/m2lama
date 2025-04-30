@@ -1,0 +1,127 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 14% 10%;
+    --foreground: 213 31% 91%;
+
+    --card: 222 14% 14%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 222 14% 10%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 212 100% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 208 22% 19%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 14% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 213 31% 91%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    direction: rtl;
+  }
+  
+  html {
+    font-family: 'Tajawal', sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}
+
+@layer components {
+  .glass-morphism {
+    @apply backdrop-blur-lg bg-white/5 border border-white/10 shadow-lg;
+  }
+  
+  .glass-card {
+    @apply bg-card/40 backdrop-blur-md border border-border/50 shadow-lg rounded-lg;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl font-bold bg-gradient-to-r from-tranzkit-blue to-tranzkit-blue/80 
+           text-white hover:shadow-[0_0_15px_rgba(52,152,254,0.5)] 
+           transition-all duration-300 hover:scale-105;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px rgba(52, 152, 254, 0.5);
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .section-heading {
+    @apply text-4xl md:text-5xl font-bold mb-6 tracking-tight;
+  }
+  
+  .section-subheading {
+    @apply text-xl text-muted-foreground mb-10 max-w-3xl mx-auto;
+  }
+  
+  .logo-image {
+    filter: drop-shadow(0 0 10px rgba(52, 152, 254, 0.5));
+  }
+}
+
+@layer utilities {
+  .rtl {
+    direction: rtl;
+  }
+  
+  .ltr {
+    direction: ltr;
+  }
+}
